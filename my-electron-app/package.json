@@ -1,0 +1,15 @@
+{
+  "name": "PLACR Analyzer",
+  "version": "0.1.0",
+  "description": "PLACR Analyzer App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "KB",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^33.2.1"
+  }
+}
