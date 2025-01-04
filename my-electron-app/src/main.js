@@ -1,16 +1,19 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain} = require('electron/main')
 const path = require('node:path')
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    titleBarStyle: 'hidden',
+    ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   win.loadFile('src/index.html')
+  win.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
