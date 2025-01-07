@@ -11,12 +11,23 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
-    <title>Hello from Electron renderer!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Swish Analyzer Version 0.1</title>
   </head>
+
+
   <body>
-    <h1>Hello from Electron renderer!</h1>
+    <div class='main-header'>
+      <h1>Swish Analyzer Version 0.1</h1>
+    </div>
+
+    <div class='file-selection'>
+    <h2>File Selector</h2>
     <p>👋</p>
-    <p id="info"></p>
+    <p>Select a file to get started.</p>
+    </div>
+    <button class="file-button">Choose File</button>
+    <button class="start-button">Start</button>
   </body>
   <script src="./renderer.js"></script>
 </html>

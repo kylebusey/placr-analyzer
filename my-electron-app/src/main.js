@@ -3,8 +3,8 @@ const path = require('node:path')
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 750,
     titleBarStyle: 'hidden',
     ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
     webPreferences: {
@@ -17,7 +17,6 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-  ipcMain.handle('ping', () => 'pong')
   createWindow()
 
   app.on('activate', () => {
