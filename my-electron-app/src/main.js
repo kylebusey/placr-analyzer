@@ -8,7 +8,8 @@ const createWindow = () => {
     titleBarStyle: 'hidden',
     ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js'),
     }
   })
 
@@ -27,5 +28,10 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
+  })
+
+
+  ipcMain.handle('select-file', async () => {
+    
   })
 
