@@ -1,33 +1,160 @@
+@font-face {
+    font-family: "RubikMicrobe";
+    src: url(../../assets/fonts/RubikMicrobe-Regular.ttf);
+}
+
+@font-face {
+    font-family: "BodoniModa";
+    src: url(../../assets/fonts/BodoniModaSC-VariableFont_opsz,wght.ttf);
+}
+
+
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Times New Roman', Times, serif;
     display: flex;
+    flex-direction: row;
+}
+
+.nav-bar {
+    background-color: rgb(226, 226, 226);
+    min-height: 100vh;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.nav-menu-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-menu-buttons button {
+    min-height: 60px;
+    min-width: 60px;
+    margin: 25px 0px 25px;
+    outline: none;
+}
+
+.nav-menu-buttons button img {
+    max-height: 30px;
+    max-width: 30px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 90vw;
 }
 
 .main-header {
-    font-size: 25px;
+    align-self: center;
     text-align: center;
-    min-height: 200px;
+    min-height: 100px;
+    min-width: 25vw;
+    margin-top: 50px;
+}
+
+.main-header h1 {
+    font-size: 50px;
+    font-family: 'RubikMicrobe';
+    margin-bottom: 0px;
+    
+}
+
+.main-header h2 {
+    margin-top: 0px;
+    font-size: 15px;
+    font-family: 'BodoniModa';
+    font-style: italic;
+}
+
+.main-header hr {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.main-header .header-image {
+    margin-top: 25px;
+}
+
+.main-header .header-image img {
+    min-width: 175px;
+    min-height: 83px;
 }
 
 .file-selection {
     text-align: center;
 }
 
-.file-button {
+.file-selection .file-button {
+    min-width: 100px;
+    min-height: 25px;
+}
+
+.button-section {
+    display: none;
+    flex-direction: column;
     align-self: center;
-    min-width: 200px;
-    min-height: 50px;
-    margin: 10px 10px;
+    margin-top: 20px;
+    min-height: 12vh;
+    min-width: 250px;
+    max-width: 25vw;
+}
+
+.button-section h3 {
+    align-self: center;
+}
+
+.button-section .demo-options {
+    display: flex;
+    text-align: center;
+    flex-grow: 2;
+}
+
+.button-section .demo-options .player-input {
+    min-width: 25%;
+    align-self: center;
+}
+
+.button-section .demo-options .player-input label {
+    margin: 5px 5px;
+}
+
+.button-section .demo-options .player-input input {
+    margin-top: 15px;
+}
+
+.button-section .demo-options .checkbox-list {
+    display: flex;
+    flex-direction: column;
+    min-width: 50%;
+    align-self: center;
+}
+
+.button-section .demo-options .checkbox-list input {
+    margin-top: 10px;
+}
+
+.button-section .demo-options .checkbox-list label {
+    margin-top: 10px;
+}
+
+.startButton {
+    display: flex;
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .start-button {
-    align-self: center;
-    min-height: 25px;
-    min-width: 200px;
-    margin-top: 20px;
+    min-height: 12px;
+    min-width: 100px;
+}
+
+#output {
+    font-size: 25px;
 }
 
 

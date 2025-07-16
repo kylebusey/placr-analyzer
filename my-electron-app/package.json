@@ -10,9 +10,9 @@
   "author": "KB",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^33.2.1"
+    "electron": "^37.2.1"
   },
   "dependencies": {
-    "@laihoe/demoparser2": "^0.33.1"
+    "@laihoe/demoparser2": "^0.39.1"
   }
 }
