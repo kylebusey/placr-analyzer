@@ -1,6 +1,3 @@
-const scoreboardSection = document.getElementById("scoreboardSection");
-const individualSection = document.getElementById("individualSection");
-
 const fileButton = document.getElementById("fileButton");
 const startButton = document.getElementById("startButton");
 const output = document.getElementById("output");
@@ -12,6 +9,21 @@ let selectedFile = null;
 let killsCheckBox = document.getElementById("kills");
 let deathsCheckBox = document.getElementById("deaths");
 let ecoCheckBox = document.getElementById("eco-kills");
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navButtons = document.querySelectorAll(".nav-bar button");
+
+  navButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const clickedTab = button.getAttribute("data-tab");
+
+      document.querySelectorAll(".tab-content").forEach((tab) => {
+        tab.classList.remove("active");
+      });
+      document.getElementById(clickedTab).classList.add("active");
+    });
+  });
+});
 
 async function checkForFile() {
   if (selectedFile) {

@@ -8,6 +8,13 @@
     src: url(../../assets/fonts/BodoniModaSC-VariableFont_opsz,wght.ttf);
 }
 
+.tab-content { 
+    display: none; 
+    padding: 20px; 
+}
+.active {
+    display: block;
+}
 
 body, html {
     margin: 0;

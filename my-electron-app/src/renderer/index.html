@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Swish Analyzer v0.2</title>
+  </head>
+
+  <body>
+    <div class="nav-bar">
+      <div class="nav-menu-buttons">
+        <button data-tab="homeTab">
+          <img src="../assets/images/navigation/home.jpg" alt="Home page" />
+        </button>
+        <button data-tab="scoreTab">
+          <img
+            src="../assets/images/navigation/score.png"
+            alt="Scoreboard page"
+          />
+        </button>
+        <button data-tab="statsTab">
+          <img
+            src="../assets/images/navigation/stats.png"
+            alt="Individual team stats page"
+          />
+        </button>
+        <button data-tab="teamTab">
+          <img
+            src="../assets/images/navigation/team.png"
+            alt="Team statistics page"
+          />
+        </button>
+      </div>
+    </div>
+
+    <div class="tab-content active" id="homeTab">
+      <div class="main-container">
+        <div class="main-header">
+          <h1>SWISH ANALYZER</h1>
+          <h2>Analyze Demos Seamlessly</h2>
+          <hr />
+
+          <div class="header-image">
+            <img src="../assets/images/cs2logo.webp" />
+          </div>
+        </div>
+
+        <div class="file-selection">
+          <h2>File Selector</h2>
+          <button class="file-button" id="fileButton">Choose File</button>
+          <p id="output"></p>
+        </div>
+
+        <div class="button-section" id="conditional-section">
+          <h3>Demo Settings</h3>
+          <div class="demo-options">
+            <div class="player-input">
+              <label for="player-name">Player Name: </label> <br />
+              <input type="text" id="player-name" name="player-name" />
+            </div>
+
+            <div class="checkbox-list">
+              <label for="kills">Show Kills</label>
+              <input type="checkbox" id="kills" name="kills" checked />
+
+              <label for="deaths">Show Deaths</label>
+              <input type="checkbox" id="deaths" name="deaths" value="deaths" />
+
+              <label for="eco-kills">Exclude Eco Kills</label>
+              <input
+                type="checkbox"
+                id="eco-kills"
+                name="eco-kills"
+                value="eco-kills"
+              />
+            </div>
+          </div>
+
+          <div class="startButton">
+            <button class="start-button" id="startButton">Start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="statsTab" class="tab-content">
+      <h1>Stats Page!</h1>
+    </div>
+  </body>
+  <script src="./renderer.js"></script>
+</html>
