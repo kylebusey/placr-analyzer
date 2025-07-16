@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
@@ -11,24 +10,85 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
-    <link rel="stylesheet" href="css/style.css">
-    <title>Swish Analyzer Version 0.1</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Swish Analyzer v0.2</title>
   </head>
 
-
   <body>
-    <div class='main-header'>
-      <h1>Swish Analyzer Version 0.1</h1>
+    <div class="nav-bar">
+      <div class="nav-menu-buttons">
+        <button onclick="loadTab('homepage.html')">
+          <img src="../assets/images/navigation/home.jpg" alt="Home page" />
+        </button>
+        <button onclick="loadTab('scoreboard.html')">
+          <img
+            src="../assets/images/navigation/score.png"
+            alt="Scoreboard page"
+          />
+        </button>
+        <button onclick="loadTab('stats.html')">
+          <img
+            src="../assets/images/navigation/stats.png"
+            alt="Individual team stats page"
+          />
+        </button>
+        <button onclick="loadTab('teamstats.html')">
+          <img
+            src="../assets/images/navigation/team.png"
+            alt="Team statistics page"
+          />
+        </button>
+      </div>
     </div>
 
-    <div class='file-selection'>
-    <h2>File Selector</h2>
-    <p id="info"></p>
-    <p id="output"></p>
-    <p>Select a file to get started.</p>
+    <div class="main-container">
+      <div class="main-header">
+        <h1>SWISH ANALYZER</h1>
+        <h2>Analyze Demos Seamlessly</h2>
+        <hr />
+
+        <div class="header-image">
+          <img src="../assets/images/cs2logo.webp" />
+        </div>
+      </div>
+
+      <div class="file-selection">
+        <h2>File Selector</h2>
+        <button class="file-button" id="fileButton">Choose File</button>
+        <p id="output"></p>
+      </div>
+
+      <div class="button-section" id="conditional-section">
+        <h3>Demo Settings</h3>
+        <div class="demo-options">
+          <div class="player-input">
+            <label for="player-name">Player Name: </label> <br />
+            <input type="text" id="player-name" name="player-name" />
+          </div>
+
+          <div class="checkbox-list">
+            <label for="kills">Show Kills</label>
+            <input type="checkbox" id="kills" name="kills" checked />
+
+            <label for="deaths">Show Deaths</label>
+            <input type="checkbox" id="deaths" name="deaths" value="deaths" />
+
+            <label for="eco-kills">Exclude Eco Kills</label>
+            <input
+              type="checkbox"
+              id="eco-kills"
+              name="eco-kills"
+              value="eco-kills"
+            />
+          </div>
+        </div>
+
+        <div class="startButton">
+          <button class="start-button" id="startButton">Start</button>
+        </div>
+      </div>
     </div>
-    <button class="file-button" id="fsButton">Choose File</button>
-    <button class="start-button">Start</button>
   </body>
   <script src="./renderer.js"></script>
 </html>
