@@ -20,8 +20,7 @@ contextBridge.exposeInMainWorld("dataParser", {
       }
     });
 
-    console.log(playerNames);
-    return;
+    return playerNames;
   },
 
   getKills: async (filePath, playerName) => {

@@ -32,3 +32,19 @@ export async function outputDemoData(demoFile) {
     alert("You must have show kills selected to show non eco kills.");
   }
 }
+
+export async function generateScoreboard(demoFile) {
+  let playerNames = await dataParser.displayPlayerNames(demoFile);
+  console.log("inside of generate scoreboard");
+  console.log(playerNames);
+
+  let tableNames = document.getElementById("table-names");
+
+  playerNames.forEach((player) => {
+    const playerRow = document.createElement("p");
+    playerRow.textContent = `${player}`;
+    tableNames.append(playerRow);
+  });
+
+  return;
+}

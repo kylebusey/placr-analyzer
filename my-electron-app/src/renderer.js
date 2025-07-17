@@ -1,4 +1,4 @@
-import { outputDemoData } from "./demoParser.js";
+import { outputDemoData, generateScoreboard } from "./demoParser.js";
 
 const fileButton = document.getElementById("fileButton");
 const startButton = document.getElementById("startButton");
@@ -54,6 +54,7 @@ startButton.addEventListener("click", async () => {
   } else {
     console.log("testing: " + selectedFile);
     outputDemoData(selectedFile);
+    generateScoreboard(selectedFile);
   }
 });
 
