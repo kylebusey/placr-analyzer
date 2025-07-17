@@ -6,14 +6,14 @@ contextBridge.exposeInMainWorld("dataParser", {
   displayPlayerNames: async (filePath) => {
     let playerNames = [];
 
-    let kills = parseEvent(
+    let total_kills = parseEvent(
       filePath,
       "player_death",
       ["last_place_name", "team_name", "round_start_equip_value"],
       ["total_rounds_played", "is_warmup_period"]
     );
 
-    kills.forEach((death) => {
+    total_kills.forEach((death) => {
       let currentPlayer = death.user_name;
       if (!playerNames.includes(currentPlayer)) {
         playerNames.push(currentPlayer);
@@ -41,6 +41,7 @@ contextBridge.exposeInMainWorld("dataParser", {
     let filteredKills = killsNoWarmup.filter(
       (killsNoWarmup) => killsNoWarmup.attacker_name == playerName
     );
+
     console.log(filteredKills);
 
     return filteredKills;

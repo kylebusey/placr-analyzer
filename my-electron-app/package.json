@@ -10,7 +10,8 @@
   "author": "KB",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^37.2.1"
+    "electron": "^37.2.1",
+    "electron-reload": "^2.0.0-alpha.1"
   },
   "dependencies": {
     "@laihoe/demoparser2": "^0.39.1"

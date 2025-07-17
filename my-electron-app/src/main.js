@@ -1,6 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require("electron/main");
 const path = require("node:path");
 
+require("electron-reload")(__dirname, {
+  electron: require(path.join(__dirname, "..", "node_modules", "electron")),
+});
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 1000,

@@ -1,14 +1,20 @@
+import { outputDemoData } from "./demoParser.js";
+
 const fileButton = document.getElementById("fileButton");
 const startButton = document.getElementById("startButton");
-const output = document.getElementById("output");
 const conditionalSection = document.getElementById("conditional-section");
-
-let playerElement = document.getElementById("player-name");
+const output = document.getElementById("output");
 let selectedFile = null;
 
+let playerElement = document.getElementById("player-name");
+let playerName = playerElement.value;
 let killsCheckBox = document.getElementById("kills");
 let deathsCheckBox = document.getElementById("deaths");
 let ecoCheckBox = document.getElementById("eco-kills");
+
+let killsChecked = killsCheckBox.checked;
+let deathsChecked = deathsCheckBox.checked;
+let ecoKillsChecked = ecoCheckBox.checked;
 
 document.addEventListener("DOMContentLoaded", () => {
   const navButtons = document.querySelectorAll(".nav-bar button");
@@ -24,13 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-async function checkForFile() {
-  if (selectedFile) {
-    conditionalSection.style.display = "flex";
-    console.log("Displaying conditional section.");
-  }
-}
 
 fileButton.addEventListener("click", async () => {
   console.log("file button clicked");
@@ -52,37 +51,38 @@ startButton.addEventListener("click", async () => {
   if (!selectedFile) {
     console.log("No file currently selected!");
     return;
-  }
-
-  let playerName = playerElement.value;
-
-  let killsChecked = killsCheckBox.checked;
-  let deathsChecked = deathsCheckBox.checked;
-  let ecoKillsChecked = ecoCheckBox.checked;
-
-  // if (!playerName) {
-  //   alert("No Player Selected!");
-  //   return;
-  // }
-  dataParser.displayPlayerNames(selectedFile);
-
-  if (killsChecked) {
-    if (ecoKillsChecked) {
-      console.log("Getting all non-eco kills!");
-      dataParser.getKills(selectedFile, playerName);
-    } else {
-      console.log("Kills Checked!");
-      dataParser.getKills(selectedFile, playerName);
-    }
-  }
-
-  if (deathsChecked) {
-    console.log("Deaths Checked!");
-    dataParser.getDeaths(selectedFile, playerName);
-  }
-
-  if (ecoKillsChecked && !killsChecked) {
-    alert("You must have show kills selected to show non eco kills.");
-    return;
+  } else {
+    console.log("testing: " + selectedFile);
+    outputDemoData(selectedFile);
   }
 });
+
+async function checkForFile() {
+  if (selectedFile) {
+    conditionalSection.style.display = "flex";
+    console.log("Displaying conditional section.");
+  }
+}
+
+// export async function outputDemoData() {
+//   demoParser.displayPlayerNames();
+
+//   if (killsChecked) {
+//     if (ecoKillsChecked) {
+//       console.log("Getting all non-eco kills!");
+//       dataParser.getKills(selectedFile, playerName);
+//     } else {
+//       console.log("Kills Checked!");
+//       dataParser.getKills(selectedFile, playerName);
+//     }
+//   }
+
+//   if (deathsChecked) {
+//     console.log("Deaths Checked!");
+//     dataParser.getDeaths(selectedFile, playerName);
+//   }
+
+//   if (ecoKillsChecked && !killsChecked) {
+//     alert("You must have show kills selected to show non eco kills.");
+//   }
+// }
