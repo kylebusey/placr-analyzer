@@ -1,23 +1,25 @@
 const { contextBridge, ipcRenderer } = require("electron");
 const path = require("node:path");
-const { parseEvent, parseTicks } = require("@laihoe/demoparser2");
+const {
+  parseEvent,
+  parseTicks,
+  parsePlayerInfo,
+  parseHeader,
+} = require("@laihoe/demoparser2");
 
 contextBridge.exposeInMainWorld("dataParser", {
+  getMap: async (filePath) => {
+    let mapData = parseHeader(filePath);
+    return mapData.map_name;
+  },
   displayPlayerNames: async (filePath) => {
     let playerNames = [];
 
-    let total_kills = parseEvent(
-      filePath,
-      "player_death",
-      ["last_place_name", "team_name", "round_start_equip_value"],
-      ["total_rounds_played", "is_warmup_period"]
-    );
+    let playerData = parsePlayerInfo(filePath);
+    playerData.sort((a, b) => a.team_number - b.team_number);
 
-    total_kills.forEach((death) => {
-      let currentPlayer = death.user_name;
-      if (!playerNames.includes(currentPlayer)) {
-        playerNames.push(currentPlayer);
-      }
+    playerData.forEach((player) => {
+      playerNames.push(player.name);
     });
 
     return playerNames;
@@ -25,6 +27,7 @@ contextBridge.exposeInMainWorld("dataParser", {
 
   getKills: async (filePath, playerName) => {
     console.log("Reading File!!!");
+    console.log("Player name is: " + playerName);
 
     let kills = parseEvent(
       filePath,
@@ -57,6 +60,8 @@ contextBridge.exposeInMainWorld("dataParser", {
     let filteredDeaths = deaths.filter(
       (deaths) => deaths.user_name == playerName
     );
+
+    console.log(filteredDeaths);
 
     return filteredDeaths;
   },

@@ -1,20 +1,13 @@
-import { outputDemoData, generateScoreboard } from "./demoParser.js";
-
 const fileButton = document.getElementById("fileButton");
 const startButton = document.getElementById("startButton");
 const conditionalSection = document.getElementById("conditional-section");
 const output = document.getElementById("output");
+
 let selectedFile = null;
-
-let playerElement = document.getElementById("player-name");
-let playerName = playerElement.value;
-let killsCheckBox = document.getElementById("kills");
-let deathsCheckBox = document.getElementById("deaths");
-let ecoCheckBox = document.getElementById("eco-kills");
-
-let killsChecked = killsCheckBox.checked;
-let deathsChecked = deathsCheckBox.checked;
-let ecoKillsChecked = ecoCheckBox.checked;
+let playerName = document.getElementById("player-name").value;
+let killsCheckBox = document.getElementById("kills").checked;
+let deathsCheckBox = document.getElementById("deaths").checked;
+let ecoCheckBox = document.getElementById("eco-kills").checked;
 
 document.addEventListener("DOMContentLoaded", () => {
   const navButtons = document.querySelectorAll(".nav-bar button");
@@ -52,9 +45,8 @@ startButton.addEventListener("click", async () => {
     console.log("No file currently selected!");
     return;
   } else {
-    console.log("testing: " + selectedFile);
-    outputDemoData(selectedFile);
-    generateScoreboard(selectedFile);
+    outputDemoData();
+    await generateScoreboard();
   }
 });
 
@@ -62,28 +54,44 @@ async function checkForFile() {
   if (selectedFile) {
     conditionalSection.style.display = "flex";
     console.log("Displaying conditional section.");
+    return true;
   }
 }
 
-// export async function outputDemoData() {
-//   demoParser.displayPlayerNames();
+async function outputDemoData() {
+  let playerName = document.getElementById("player-name").value;
+  let map_name = await dataParser.getMap(selectedFile);
+  console.log(map_name);
 
-//   if (killsChecked) {
-//     if (ecoKillsChecked) {
-//       console.log("Getting all non-eco kills!");
-//       dataParser.getKills(selectedFile, playerName);
-//     } else {
-//       console.log("Kills Checked!");
-//       dataParser.getKills(selectedFile, playerName);
-//     }
-//   }
+  if (killsCheckBox) {
+    if (ecoCheckBox) {
+      console.log("Getting all non-eco kills!");
+      dataParser.getKills(selectedFile, playerName);
+    } else {
+      console.log("Kills Checked!");
+      dataParser.getKills(selectedFile, playerName);
+    }
+  }
 
-//   if (deathsChecked) {
-//     console.log("Deaths Checked!");
-//     dataParser.getDeaths(selectedFile, playerName);
-//   }
+  if (deathsCheckBox) {
+    console.log("Deaths Checked!");
+    dataParser.getDeaths(selectedFile, playerName);
+  }
 
-//   if (ecoKillsChecked && !killsChecked) {
-//     alert("You must have show kills selected to show non eco kills.");
-//   }
-// }
+  if (ecoCheckBox && !killsCheckBox) {
+    alert("You must have show kills selected to show non eco kills.");
+  }
+}
+
+async function generateScoreboard() {
+  let playerNames = await dataParser.displayPlayerNames(selectedFile);
+  let tableNames = document.getElementById("table-names");
+
+  playerNames.forEach((player) => {
+    const playerRow = document.createElement("p");
+    playerRow.textContent = `${player}`;
+    tableNames.append(playerRow);
+  });
+
+  return;
+}
